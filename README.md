@@ -72,7 +72,7 @@ To decrypt an encrypted message simply apply the process of encryption using the
 - A permutation is effectively a shuffling of elements. 
 - A compression permutation is a permutation that ignores certain elements
 - An expansion permutation is a permutation where elements are repeated (counted for more than one times)
-<br>
+
 #### Notes:
 **ECB (Electronic Code Book)** mode: each 64-bit block of the original text is encrypted individually
 Other modes: **CBC (Chain Block Coding)** and **CFB (Cipher Feedback)** make each cipher block dependent on all the previous message blocks through an initial XOR operation.

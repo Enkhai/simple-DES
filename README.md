@@ -51,9 +51,10 @@ Here  is how the S-Box permutation works with an example:
 | **1** | 3 | 13 | 4 | 7 | 15 | 2 | 8 | 14 | 12 | 0 | 1 | 10 | 6 | 9 | 11 | 5 |
 | **2** | 0 | 14 | 7 | 11 | 10 | 4 | 13 | 1 | 5 | 8 | 12 | 6 | 9 | 3 | 2 | 15 |
 | **3** | 13 | 8 | 10 | 1 | 3 | 15 | 4 | 2 | 11 | 6 | 7 | 12 | 0 | 5 | 14 | 9 |
+
 [You can find all S-Box permutation tables here](https://upload.wikimedia.org/wikipedia/commons/4/44/DES_S-box.jpg)
-	- Select the number that is on the *i*-th row and *j*-th column. This number is the output *S2(B2)* (*S2* for the second block)
-	- Take the *Sx(Bx)* outputs and concatenate them. We will now get a 32-bit part.
+- Select the number that is on the *i*-th row and *j*-th column. This number is the output *S2(B2)* (*S2* for the second block)
+- Take the *Sx(Bx)* outputs and concatenate them. We will now get a 32-bit part.
 d. Perform a P-Box permutation on the 32-bit S-Box output to obtain the final value of *f(RPT, subkey<sub>round</sub>)*
 [This is how to map the bits for the P-Box permutation](https://image3.slideserve.com/5813050/p-box-l.jpg)
 

@@ -26,37 +26,140 @@ For other rounds, perform a double-bit left shift.](https://media.geeksforgeeks.
 5. We now have the 64-bit encrypted text 
 
 #### B.3* Each processing round consists of the following actions:
-1. Create (or simply get if you have already calculated it in section A) the according subkey
-2. In each round:
-- The left part becomes the right part
-- The right part is calculated as a sum of the left part plus a function *f* on the right part and the according subkey.
-For example, for round 1 we will need the first subkey, for round 2 the second and so on.
-Here is how the function *f* works: 
-a. Perform an expansion permutation* on the right 32-bit part (RPT). This will produce a 48-bit block.
-[This is how to map the bits for the expansion permutation](https://www.tutorialspoint.com/cryptography/images/des_specification.jpg)
-b. XOR the expanded permutated part (block) with the according 48-bit subkey.
-c. We now have a 48-bit block. Split the block into 8 6-bit blocks and perform an S-Box permutation on each block.
+<ol>
+<li>Create (or simply get if you have already calculated it in section A) the according subkey</li>
+<li>
+In each round:
+<ul>
+<li>The left part becomes the right part</li>
+<li>The right part is calculated as a sum of the left part plus a function <i>f</i> on the right part and the according subkey. <br>
+For example, for round 1 we will need the first subkey, for round 2 the second and so on. <br>
+Here is how the function <i>f</i> works:
+<ol type='a'>
+<li>Perform an expansion permutation* on the right 32-bit part (RPT). This will produce a 48-bit block. <br>
+<a href="https://www.tutorialspoint.com/cryptography/images/des_specification.jpg">This is how to map the bits for the expansion permutation</a>
+</li>
+<li>XOR the expanded permutated part (block) with the according 48-bit subkey.</li>
+<li>We now have a 48-bit block. Split the block into 8 6-bit blocks and perform an S-Box permutation on each block. <br>
 Here  is how the S-Box permutation works with an example:
-	- This is a 48-bit part:
-110101 000101 100100 010010 100001 000011 010101 000010
-	- This is the second 6-bit block of the 48-bit part:
-0|0010|1 
-	- We use the first and the last bit to form a 2-bit *i* binary number: 01
-	- We use the rest of the middle 4 bits to form a 4-bit *j* binary number: 0010
-	- For each block we are given a specific *S* table. For block number 2 for example we the table *S2* out of 8 *S* tables:
-	-
-| i / j | 0 | 1 | 2  | 3 | 4 | 5 | 6  | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
-| - | - | :-: | :-: | :-:|:-:|:-:| :-: | :-: | :-:|:-: | :-:  | :-:  | :-:  | :-:  | :-:  | -: |
-| **0** | 15 | 1 | 8 | 14 | 6 | 11| 3| 4 | 9 | 7 | 2 | 13 | 12 |0 | 5 | 10
-| **1** | 3 | 13 | 4 | 7 | 15 | 2 | 8 | 14 | 12 | 0 | 1 | 10 | 6 | 9 | 11 | 5 |
-| **2** | 0 | 14 | 7 | 11 | 10 | 4 | 13 | 1 | 5 | 8 | 12 | 6 | 9 | 3 | 2 | 15 |
-| **3** | 13 | 8 | 10 | 1 | 3 | 15 | 4 | 2 | 11 | 6 | 7 | 12 | 0 | 5 | 14 | 9 |
-
-[You can find all S-Box permutation tables here](https://upload.wikimedia.org/wikipedia/commons/4/44/DES_S-box.jpg)
-- Select the number that is on the *i*-th row and *j*-th column. This number is the output *S2(B2)* (*S2* for the second block)
-- Take the *Sx(Bx)* outputs and concatenate them. We will now get a 32-bit part.
-d. Perform a P-Box permutation on the 32-bit S-Box output to obtain the final value of *f(RPT, subkey<sub>round</sub>)*
-[This is how to map the bits for the P-Box permutation](https://image3.slideserve.com/5813050/p-box-l.jpg)
+<ul>
+<li>This is a 48-bit part:<br>
+110101 000101 100100 010010 100001 000011 010101 000010</li>
+<li>This is the second 6-bit block of the 48-bit part:<br>
+0|0010|1 <br></li>
+<li>We use the first and the last bit to form a 2-bit <i>i</i> binary number: 01</li>
+<li>We use the rest of the middle 4 bits to form a 4-bit <i>j</i> binary number: 0010</li>
+<li>For each block we are given a specific <i>S</i> table. For block number 2 for example we the table <i>S2</i> out of 8 <i>S</i> tables:
+<table>
+<tr>
+</tr>
+<th>i /j</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<tr>
+</tr>
+<th>0</th>
+<td>15</td>
+<td>1</td>
+<td>8</td>
+<td>14</td>
+<td>6</td>
+<td>11</td>
+<td>3</td>
+<td>4</td>
+<td>9</td>
+<td>7</td>
+<td>2</td>
+<td>13</td>
+<td>12</td>
+<td>0</td>
+<td>5</td>
+<td>10</td>
+<tr>
+<th>1</th>
+<td>3</td>
+<td>13</td>
+<td>4</td>
+<td>7</td>
+<td>15</td>
+<td>2</td>
+<td>8</td>
+<td>14</td>
+<td>12</td>
+<td>0</td>
+<td>1</td>
+<td>10</td>
+<td>6</td>
+<td>9</td>
+<td>11</td>
+<td>5</td>
+</tr>
+<tr>
+<th>2</th>
+<td>0</td>
+<td>14</td>
+<td>7</td>
+<td>11</td>
+<td>10</td>
+<td>4</td>
+<td>13</td>
+<td>1</td>
+<td>5</td>
+<td>8</td>
+<td>12</td>
+<td>6</td>
+<td>9</td>
+<td>3</td>
+<td>2</td>
+<td>15</td>
+</tr>
+<tr>
+<th>3</th>
+<td>13</td>
+<td>8</td>
+<td>10</td>
+<td>1</td>
+<td>3</td>
+<td>15</td>
+<td>4</td>
+<td>2</td>
+<td>11</td>
+<td>6</td>
+<td>7</td>
+<td>12</td>
+<td>0</td>
+<td>5</td>
+<td>14</td>
+<td>9</td>
+</tr>
+<table>
+<a href="https://upload.wikimedia.org/wikipedia/commons/4/44/DES_S-box.jpg">You can find all S-Box permutation tables here</a></li>
+<li>Select the number that is on the <i>i</i>-th row and <i>j</i>-th column. This number is the output <i>S2(B2)</i> (<i>S2</i> for the second block)</li>
+<li>Take the <i>Sx(Bx)</i> outputs and concatenate them. We will now get a 32-bit part.
+d. Perform a P-Box permutation on the 32-bit S-Box output to obtain the final value of <i>f(RPT, subkey<sub>round</sub>)</i> <br>
+<a href="https://image3.slideserve.com/5813050/p-box-l.jpg">This is how to map the bits for the P-Box permutation</a>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
 
 #### B.4* Final Permutation - Reverse Initial Permutation:
 After we have completed all 16 rounds of encryption here is what we will do:

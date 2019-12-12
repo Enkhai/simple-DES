@@ -21,7 +21,7 @@ For other rounds, perform a double-bit left shift.](https://media.geeksforgeeks.
 ## B. Encryption
 1. Perform the IP ([Initial Permutation*](https://media.geeksforgeeks.org/wp-content/uploads/444-3.png)) on the 64-bit input text
 2. Split the 64-bit permutated text into two 32-bit parts: **LPT** and **RPT**
-3. Process the two parts 16 times using each one of the 16 subkeys
+3. Process* the two parts 16 times using each one of the 16 subkeys
 4. Perform the final permutation* (Reverse Initial Permutation - IP<sup>-1</sup>)
 5. We now have the 64-bit encrypted text 
 
@@ -49,7 +49,7 @@ Here  is how the S-Box permutation works with an example:
 0|0010|1 <br></li>
 <li>We use the first and the last bit to form a 2-bit <i>i</i> binary number: 01</li>
 <li>We use the rest of the middle 4 bits to form a 4-bit <i>j</i> binary number: 0010</li>
-<li>For each block we are given a specific <i>S</i> table. For block number 2 for example we the table <i>S2</i> out of 8 <i>S</i> tables:
+<li>For each block we are given a specific <i>S</i> table. For block number 2 for example we get the table <i>S2</i> out of 8 <i>S</i> tables:
 <table>
 <tr>
 <th>i /j</th>
@@ -148,9 +148,10 @@ Here  is how the S-Box permutation works with an example:
 </tr>
 </table>
 <a href="https://upload.wikimedia.org/wikipedia/commons/4/44/DES_S-box.jpg">You can find all S-Box permutation tables here</a></li>
-<li>Select the number that is on the <i>i</i>-th row and <i>j</i>-th column. This number is the output <i>S2(B2)</i> (<i>S2</i> for the second block)</li>
-<li>Take the <i>Sx(Bx)</i> outputs and concatenate them. We will now get a 32-bit part.
-d. Perform a P-Box permutation on the 32-bit S-Box output to obtain the final value of <i>f(RPT, subkey<sub>round</sub>)</i> <br>
+<li>Select the number that is on the <i>i</i>-th row and <i>j</i>-th column and convert it to a 4-bit binary number. This number is the output <i>S2(B2)</i> (<i>S2</i> for the second block). <br>
+</li>
+<li>Take the <i>Sx(Bx)</i> outputs and concatenate them. We will now get a 32-bit part (4-bit outputs * 8 blocks). </li>
+<li>Perform a P-Box permutation on the 32-bit S-Box output to obtain the final value of <i>f(RPT, subkey<sub>round</sub>)</i> <br>
 <a href="https://image3.slideserve.com/5813050/p-box-l.jpg">This is how to map the bits for the P-Box permutation</a>
 </li>
 </ul>
@@ -161,9 +162,9 @@ d. Perform a P-Box permutation on the 32-bit S-Box output to obtain the final va
 </li>
 </ol>
 
-#### B.4* Final Permutation - Reverse Initial Permutation:
+#### B.4* Final Permutation / Reverse Initial Permutation:
 After we have completed all 16 rounds of encryption here is what we will do:
-1. We have the output *L<sub>16</sub>R<sub>16</sub>*, which is a combination of the left and right 16-round parts.
+1. We have the output *L<sub>16</sub>R<sub>16</sub>*, which is a combination of the left and right 16th-round parts.
 Reverse the two parts to obtain *R<sub>16</sub>L<sub>16</sub>*
 2. Apply the final permutation* (IP<sup>-1</sup>).
 [This is how to map the bits for the final permutation](https://www.researchgate.net/profile/Professor_Fahim_Akhter/publication/270680867/figure/tbl2/AS:642486745714688@1530192185514/nverse-Initial-Permutation-IP-1-13.png)

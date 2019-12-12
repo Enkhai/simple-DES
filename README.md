@@ -52,7 +52,6 @@ Here  is how the S-Box permutation works with an example:
 <li>For each block we are given a specific <i>S</i> table. For block number 2 for example we the table <i>S2</i> out of 8 <i>S</i> tables:
 <table>
 <tr>
-</tr>
 <th>i /j</th>
 <th>0</th>
 <th>1</th>
@@ -70,8 +69,8 @@ Here  is how the S-Box permutation works with an example:
 <th>13</th>
 <th>14</th>
 <th>15</th>
-<tr>
 </tr>
+<tr>
 <th>0</th>
 <td>15</td>
 <td>1</td>
@@ -89,6 +88,7 @@ Here  is how the S-Box permutation works with an example:
 <td>0</td>
 <td>5</td>
 <td>10</td>
+</tr>
 <tr>
 <th>1</th>
 <td>3</td>
@@ -146,7 +146,7 @@ Here  is how the S-Box permutation works with an example:
 <td>14</td>
 <td>9</td>
 </tr>
-<table>
+</table>
 <a href="https://upload.wikimedia.org/wikipedia/commons/4/44/DES_S-box.jpg">You can find all S-Box permutation tables here</a></li>
 <li>Select the number that is on the <i>i</i>-th row and <i>j</i>-th column. This number is the output <i>S2(B2)</i> (<i>S2</i> for the second block)</li>
 <li>Take the <i>Sx(Bx)</i> outputs and concatenate them. We will now get a 32-bit part.

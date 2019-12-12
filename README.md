@@ -178,7 +178,7 @@ To decrypt an encrypted message simply apply the process of encryption using the
 - An expansion permutation is a permutation where elements are repeated (counted for more than one times)
 
 #### Notes:
-**ECB (Electronic Code Book)** mode: each 64-bit block of the original text is encrypted individually
+**ECB (Electronic Code Book)** mode: each 64-bit block of the original text is encrypted individually <br>
 Other modes: **CBC (Chain Block Coding)** and **CFB (Cipher Feedback)** make each cipher block dependent on all the previous message blocks through an initial XOR operation.
 
 Sources:

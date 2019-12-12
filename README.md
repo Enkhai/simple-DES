@@ -11,10 +11,10 @@ Here is how to do this:
 4. To get each one of the subkeys from the two parts:
 - Perform a left shift on each of the two key parts. A left shift is a process where the Most Significant Bits (MSB) become the Least Significant (LSB).
 An example:
-10|110010 -> 110010|10
+10|110010 -> 110010|10<br>
 [For rounds subkeys 1, 2, 9 and 16, perform a single-bit left shift.
 For other rounds, perform a double-bit left shift.](https://media.geeksforgeeks.org/wp-content/uploads/666-2.png)
-- Perform a compression permutation* on the concatenated two key parts.
+- Perform a compression permutation* on the concatenated two key parts.<br>
 [This is how to map the bits for the compression permutation](https://media.geeksforgeeks.org/wp-content/uploads/777.png)
 5. After all 16 rounds of step 4 we will get all the subkeys
 

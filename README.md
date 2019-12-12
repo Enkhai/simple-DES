@@ -182,8 +182,8 @@ To decrypt an encrypted message simply apply the process of encryption using the
 Other modes: **CBC (Chain Block Coding)** and **CFB (Cipher Feedback)** make each cipher block dependent on all the previous message blocks through an initial XOR operation.
 
 Sources:
-https://www.geeksforgeeks.org/data-encryption-standard-des-set-1/
-http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm
+https://www.geeksforgeeks.org/data-encryption-standard-des-set-1/ <br>
+http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm <br>
 https://jhafranco.com/2012/02/10/simplified-des-implementation-in-python/
 
 > Written with [StackEdit](https://stackedit.io/).

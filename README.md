@@ -181,7 +181,7 @@ To decrypt an encrypted message simply apply the process of encryption using the
 **ECB (Electronic Code Book)** mode: each 64-bit block of the original text is encrypted individually <br>
 Other modes: **CBC (Chain Block Coding)** and **CFB (Cipher Feedback)** make each cipher block dependent on all the previous message blocks through an initial XOR operation.
 
-Sources:
+Sources:<br>
 https://www.geeksforgeeks.org/data-encryption-standard-des-set-1/ <br>
 http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm <br>
 https://jhafranco.com/2012/02/10/simplified-des-implementation-in-python/
